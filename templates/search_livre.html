@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integr
+        ity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+    </div>
+    <h1>Rechercher Livres </h1>
+    <div class="container w-50 my-5">
+        <form method="POST" action="{{ url_for('get_search_livre') }}">
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Auteur</label>
+                <input class="form-control" type="text" id="auteur" name="auteur">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Anne</label>
+                <input class="form-control" type="number" id="annee" name="annee">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+
+    </div>
+
+    <h2>Résultats de la recherche</h2>
+    <table class="table table-hover table-bordererd table-striped">
+        {% for livre in livres %}
+        <tr>
+            <td>
+                <li>
+                    {{ livre.nom }} par {{ livre.auteur }} ({{ livre.annee }}) </li>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    
+
+
+</body>
+
+</html>

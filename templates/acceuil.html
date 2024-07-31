@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+        box-sizing: border-box;
+        text-decoration: none;
+        transition: all.2s linear;
+        border: none;
+    }
+
+    html {
+        font-size: 62, 5%;
+        overflow-x: hidden;
+        scroll-padding-top: 7em;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        position: relative;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        align-items: center;
+        background-color: black;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 8%;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    header .logo {
+        color: white;
+        width: 50px;
+        font-size: 30px;
+        font-weight: 700;
+        margin-left: -80px;
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    .menu ul {
+        list-style-type: none;
+        /* Pour enlever les puces des listes */
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        display: inline-flex;
+        /* Afficher les éléments en ligne */
+        margin: 0 15px;
+    }
+
+    .menu li a {
+        font-size: 15px;
+        color: white;
+        font-weight: bolder;
+        padding: 10px;
+        text-decoration: none;
+        /* Pour enlever le soulignement des liens */
+    }
+
+    .menu li a:hover {
+        color: #DCDCDC;
+    }
+
+    #home {
+        margin-top: 50px;
+        height: calc(100vh - 50px);
+        align-items: center;
+        padding: 0 8%;
+        justify-content: space-between ;
+        display: flex;
+        position: relative;
+    
+    }
+    
+    /*Scrollbar CSS*/
+    ::-webkit-scrollbar {
+        height: 1px;
+        width: 8px;
+        background-color: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: rgb(218, 212, 212);
+    }
+    
+    #home .left {
+        width: 40%;
+    
+    }
+    
+    #home .left h1 {
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+    
+    #home .left h1 span {
+        color: black;
+    }
+    
+    #home .left p {
+        margin-bottom: 30px;
+        font-size: 13px;
+        color: #999;
+    }
+    
+    #home .left a {
+        background-color: black;
+        padding: 10px 14px;
+        font-size: 14px;
+        color: #fff;
+        transition: 0.5s;
+    }
+    
+    #home .left a:hover {
+        background-color: black;
+    }
+    
+    #home .right {
+        width: 50%;
+        display: inline;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    
+    #home .right img {
+        width: 100%;
+    }
+    #cars {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .section_title {
+        font-size: 25px;
+        text-transform: uppercase;
+        position: relative;
+    }
+    
+    .section_title:before {
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        content: "";
+        background-color: red;
+        width: 100%;
+        height: 5px;
+        border-radius: 6px;
+    }
+    
+    .section_title:after {
+        position: absolute;
+        top: -2px;
+        left: -10px;
+        content: "";
+        background-color:   #7073ee ;
+        width: 100%;
+        height: 5px;
+        border-radius: 6px;
+    }
+    
+    .images {
+        margin: 100px auto;
+        padding: 0 8%;
+        height: 50%;
+        width: 60%;
+    }
+    
+    .images ul {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .images li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2.665%;
+        height: 300px;
+        width: 28%;
+    }
+    
+    .images li div {
+        width: 100%;
+        height: 60%;
+    }
+    
+    .images li div img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    
+    .images li span {
+        color: black;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 10px;
+        font-style: normal;
+        font-weight: 600;
+    }
+    
+    #cars li span.prix {
+        color:  black;
+        font-weight: normal;
+        margin-bottom: 10px;
+    }
+    
+    #cars li a {
+        background-color: black;
+        color: white;
+        font-size: 15px;
+        margin-top: -2px;
+        padding: 5px 20px;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="logo">
+            <p>LIBRAIRIE</p>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                <li><a href="{{url_for('register')}}">Register</a></li>
+                <li><a href="{{url_for('acceuil')}}">Acceuil</a></li>
+                <li><a href="{{url_for('useremprunts')}}">Mes Emprunts</a></li>
+                {% if current_user.is_authenticated %}
+                <a href="{{url_for('logout')}}" style="color: white; text-decoration: none;">Déconnexion</a>
+                {% endif %}
+
+
+
+            </ul>
+
+        </div>
+
+
+    </header>
+    
+        <section id="home">
+            <div class="left">
+                <h1>Rechercher <span>Votre Livre </span>Maintenant</h1>
+                <p></p>
+                <a href="{{url_for('get_search_livre')}}">Rechercher</a>
+            </div>
+            <div class="right">
+                <img src="static/images/1.png">
+            </div>
+        </section>
+    
+
+        <section id="cars">
+            <h1 class="section_title">Nos Livres</h1>
+            <div class="images">
+                <ul>
+                    {% for livre in livres %}
+                    <li class="car">
+                        <div>
+                            <img src="{{ url_for('static', filename='images/' + livre.image_path) }}" alt="">
+                        </div>
+                        <span>{{ livre.nom }}</span>
+                        <span class="prix">{{ livre.auteur }}</span>
+                        <a href="{{ url_for('emprunt_livre', livre_id=livre.id) }}">EMPRUNTER MAINTENANT</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        
+
+
+
+
+</body>
+
+</html>

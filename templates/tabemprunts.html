@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <section class="col-12">
+               
+                <h1>Liste des Emprunts</h1>
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Nom Livre </th>
+                        <th>Date Pret </th>
+                        <th>Date Retour Pret </th> 
+                        <th>ID Livre</th>
+                        <th>ID User</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        {% for tabemprunt in tabemprunts %}
+                        <tr>
+                            <td>{{ tabemprunt.id }}</td>
+                            <td>{{ tabemprunt.nom }}</td>
+                            <td>{{ tabemprunt.date_pret }}</td> 
+                            <td>{{ tabemprunt.date_fin_pret }}</td>
+                            <td>{{ tabemprunt.user_id }}</td> 
+                            <td>{{ tabemprunt. livre_id }}</td> 
+                            <td>
+                                <a href="{{ url_for('delete_emprunt', emprunt_id=tabemprunt.id) }}" ><ion-icon name="trash-outline"></ion-icon></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    
+</body>
+</html>

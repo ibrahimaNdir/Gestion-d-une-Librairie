@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+            box-sizing: border-box;
+            text-decoration: none;
+            transition: all.2s linear;
+            border: none;
+        }
+
+        html {
+            font-size: 62, 5%;
+            overflow-x: hidden;
+            scroll-padding-top: 7em;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            position: relative;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            align-items: center;
+            background-color: black;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 8%;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        header .logo {
+            color: white;
+            width: 50px;
+            font-size: 30px;
+            font-weight: 700;
+            margin-left: -80px;
+        }
+
+        
+        .menu {
+            display: flex;
+        }
+        
+        .menu ul {
+            list-style-type: none; /* Pour enlever les puces des listes */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu li {
+            display: inline-flex; /* Afficher les éléments en ligne */
+            margin: 0 15px;
+        }
+        
+        .menu li a {
+            font-size: 15px;
+            color: white;
+            font-weight: bolder;
+            padding: 10px;
+            text-decoration: none; /* Pour enlever le soulignement des liens */
+        }
+        
+        .menu li a:hover {
+            color: #DCDCDC;
+        }
+
+        .pi {
+            width: 500px;
+            height: 400px;
+            background-color: #f9fafb;
+            top: 70px;
+            left: 400px;
+            position: relative;
+            padding-left: 60px;
+            border-radius: 10px;
+            margin: 70px, 90px;
+            padding-top: 30px;
+            padding-bottom: 5px;
+
+
+        }
+
+        .pi input {
+            width: 400px;
+            height: 35px;
+            background: #f9fafb;
+            border: 1px solid black;
+            color: black;
+            padding-left: 10px;
+            font-size: 15px;
+            margin-top: 40px;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            border-radius: 7px;
+        }
+
+        .pi h2 {
+            width: 400px;
+            font-family: sans-serif;
+            text-align: center;
+            color: black;
+            font-size: 22px;
+            background-color: white;
+            border-radius: 5px;
+            margin: 2px;
+            padding: 8px;
+        }
+
+        .pi input:focus {
+            outline: none;
+        }
+
+        .press {
+            width: 400px;
+            height: 40px;
+            background-color: black;
+            cursor: pointer;
+            border: none;
+            color: white;
+            margin-top: 30px;
+            list-style: none;
+            border-radius: 10px;
+        }
+
+        .press:hover {
+            background-color: white;
+            color: black;
+        }
+
+        ::placeholder {
+            color: black;
+            font-size: 16px;
+        }
+
+        .pi p {
+            margin-top: 20px;
+            margin-left: 25px;
+        }
+
+       
+
+        /*Scrollbar CSS*/
+        ::-webkit-scrollbar {
+            height: 1px;
+            width: 8px;
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: rgb(218, 212, 212);
+        }
+        form {
+
+            margin-top: 100px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <p>LIBRAIRIE</p>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="{{url_for('login')}}">Login</a></li>
+                <li><a href="{{url_for('register')}}">Register</a></li>
+                <li><a href="{{url_for('acceuil')}}">Acceuil</a></li>
+
+            </ul>
+            
+
+        </div>
+
+
+    </header>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert" >
+                <li>{{ message }}</li>
+
+            </div>
+            
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    
+    <form method="POST"  aligne="center" action="{{url_for('login')}}">
+        <div class="pi">
+            <h2>mylibrairie</h2>
+
+            <input type="text" name="username" id="username" placeholder="Enter Your username"  required><br>
+            <input type="password" name="password" id="password" placeholder="Enter Your password"  required><br>
+
+            <button class="press" type="submit" name="envoie">Connexion</button>
+            <p class="link">Don't have an account ?<a href="{{url_for('register')}}"> inscrire </a>ici</p>
+
+        </div>
+    </form>
+   
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input {
+        width: 400px;
+        height: 35px;
+        background: #f9fafb;
+        border: 1px solid black;
+        color: black;
+        padding-left: 10px;
+        font-size: 15px;
+        margin-top: 15px;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        border-radius: 7px;
+        display: block;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 400px;
+        height: 40px;
+        background-color: black;
+        cursor: pointer;
+        border: none;
+        color: white;
+        margin-top: 30px;
+        list-style: none;
+        border-radius: 10px;
+    }
+
+</style>
+<body>
+    <form action="{{ url_for('addLivre') }}" method="post" enctype="multipart/form-data">
+        <label for="nom">Nom:</label>
+        <input type="text" name="nom" id="nom" required><br>
+    
+        <label for="auteur">Auteur:</label>
+        <input type="text" name="auteur" id="auteur" required><br>
+    
+        <label for="date_parution">Annee :</label>
+        <input type="number" name="annee" id="annee" required><br>
+    
+        <label for="image">Image:</label>
+        <input type="file" name="image" id="image" required><br><br>
+    
+        <button type="submit">Save</button>
+    </form>
+    
+
+    
+</body>
+</html>

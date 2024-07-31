@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integr ity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+      
+        <section id="books">
+            <h1 class="section_title">EMPRUNT</h1>
+
+            <div class="container w-50 my-5">
+                <form method="post" action="{{ url_for('emprunt_livre', livre_id=livre.id) }}">
+                    <div class="mb-3">
+                        <label for="nom_livre" class="form-label">Nom du Livre</label>
+                        <input type="text" name="nom_livre" value="{{ livre.nom }}" class="form-control" id="nom_livre" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date_pret" class="form-label">Date de Prêt</label>
+                        <input type="text" class="form-control" id="date_pret" name="date_pret"
+                               value="{{ date_pret.strftime('%Y-%m-%d') }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date_retour" class="form-label">Date de retour (max 15 jours)</label>
+                        <input type="date" class="form-control" id="date_retour" name="date_retour"
+                               value="{{ date_retour.strftime('%Y-%m-%d') }}" required>
+                    </div>
+                    <input type="hidden" name="livre_id" value="{{ livre.id }}">
+                    <input type="hidden" name="user_id" value="{{ current_user.id }}">
+                    <button type="submit" class="btn btn-primary">Emprunter</button> 
+                </form>
+                
+            </div>
+            <a href="{{url_for('useremprunts')}}">
+                <button type="button" class="bouton">Voir Mon Emprunt</button>
+            </a>
+          
+
+
+    </div>
+    </section>
+
+
+    </div>
+
+
+
+
+</body>
+
+
+</html>

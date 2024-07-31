@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Livres </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <div class="row">
+            <section class="col-12">
+               
+                <h1>Liste des Livres</h1>
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Nom Livre</th>
+                        <th>Auteur</th>
+                        <th>Annee</th> 
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        {% for livre in livres %}
+                        <tr>
+                            <td>{{ livre.id }}</td>
+                            <td>{{ livre.nom }}</td>
+                            <td>{{ livre.auteur }}</td> 
+                            <td>{{ livre.annee }}</td>
+
+                            <td>
+                                <a href="{{ url_for('delete_livre', livre_id=livre.id) }}" ><ion-icon name="trash-outline"></ion-icon></a>
+                                <a href=""><ion-icon name="create-outline"></ion-icon></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+
+   
+        
+
+
+</body>
+
+</html>

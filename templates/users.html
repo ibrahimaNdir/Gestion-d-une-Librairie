@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des utilisateurs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <section class="col-12">
+               
+                <h1>Liste des Utilisateurs</h1>
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Nom d'utilisateur</th>
+                        <th>Email</th>
+                        <th>Password</th> 
+                        <th>Adresse</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td> 
+                            <td>{{ user.password }}</td>
+                            <td>{{ user.adresse }}</td> 
+                            <td>
+                                <a href="{{ url_for('delete_user', user_id=user.id) }}" ><ion-icon name="trash-outline"></ion-icon></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
+
+
+
+    
+    
+</body>
+</html>
